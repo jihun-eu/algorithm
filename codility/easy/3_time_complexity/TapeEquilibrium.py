@@ -64,3 +64,35 @@ def solution2(A):  # 84%
         min_diff = min(min_diff, abs(first_part - second_part))
 
     return min_diff
+
+
+def solution(A):
+    # write your code in Python 3.6
+    left = 0
+    right = sum(A)
+    carry = None
+    for i in range(1, len(A)):
+        left += A[i]
+        right -= A[i]
+        tmp = abs(left - right)
+        carry = min(carry, tmp)
+
+    return carry
+
+
+def solution(A):
+    sum_of_part_one = 0
+    sum_of_part_two = sum(A)
+    min_difference = None
+
+    for i in range(1, len(A)):
+        sum_of_part_one += A[i-1]
+        sum_of_part_two -= A[i-1]
+        difference = abs(sum_of_part_one - sum_of_part_two)
+
+        if min_difference == None:
+            min_difference = difference
+        else:
+            min_difference = min(min_difference, difference)
+
+    return min_difference

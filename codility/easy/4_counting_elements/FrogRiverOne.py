@@ -55,3 +55,20 @@ def solution(X, A):  # 81 %
             if not False in path_checker:
                 return i
     return -1
+
+
+def solution(X: int, A: list):  # 100 %
+    # write your code in Python 3.6
+    frog_path = [1] + [0] * X
+    full_path = (X * (X + 1)) // 2
+    cross_duration = -1
+
+    for time in range(len(A)):
+        position = A[time]
+        if frog_path[position] == 0:
+            frog_path[position] += 1
+            full_path -= position
+            if full_path == 0:
+                cross_duration = time
+                break
+    return cross_duration
